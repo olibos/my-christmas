@@ -1,6 +1,6 @@
 import {defineConfig} from 'vite';
 export default defineConfig({
-    //base: 'https://cdn.example.com/assets/',
+    base: 'https://olibos.github.io/my-christmas/',
     build: {
     rollupOptions: {
       output: {
