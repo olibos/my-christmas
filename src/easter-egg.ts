@@ -11,7 +11,7 @@ export class ChristmasEasterEgg extends LitElement {
 
   toggle() {
     this.activated = !this.activated;
-    if (this.activated){
+    if (this.activated) {
       new Audio(Christmass).play();
     }
     this.render();
@@ -45,7 +45,7 @@ export class ChristmasEasterEgg extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     window.addEventListener('konami-code', () => this.toggle());
-    if (this.activated){
+    if (this.activated) {
       new Audio(Christmass).play();
     }
   }
@@ -56,12 +56,13 @@ export class ChristmasEasterEgg extends LitElement {
           display: block;
       }
 
-      .overlay {
+      :host {
         position: fixed;
         inset: 0;
         pointer-events: none;
         z-index: 9999;
         overflow: hidden;
+        user-select: none;
       }
 
       .glow {
@@ -218,31 +219,29 @@ export class ChristmasEasterEgg extends LitElement {
 
     if (!this.activated) return nothing;
     return html`
-        <div class="overlay">
-          <div class="glow"></div>
+        <div class="glow"></div>
 
-          ${stars.map(star => html`
-            <div class="star" style="left: ${star.left}%; top: ${star.top}%; animation-delay: ${star.delay}s;">⭐</div>
-          `)}
+        ${stars.map(star => html`
+          <div class="star" style="left: ${star.left}%; top: ${star.top}%; animation-delay: ${star.delay}s;">⭐</div>
+        `)}
 
-          ${snowflakes.map(flake => html`
-            <div class="snowflake" style="left: ${flake.left}%; animation-duration: ${flake.duration}s; animation-delay: ${flake.delay}s; font-size: ${flake.size}px;">❄️</div>
-          `)}
+        ${snowflakes.map(flake => html`
+          <div class="snowflake" style="left: ${flake.left}%; animation-duration: ${flake.duration}s; animation-delay: ${flake.delay}s; font-size: ${flake.size}px;">❄️</div>
+        `)}
 
-          ${gifts.map(gift => html`
-            <div class="gift" style="left: ${gift.left}%; animation-duration: ${gift.duration}s; animation-delay: ${gift.delay}s;">🎁</div>
-          `)}
+        ${gifts.map(gift => html`
+          <div class="gift" style="left: ${gift.left}%; animation-duration: ${gift.duration}s; animation-delay: ${gift.delay}s;">🎁</div>
+        `)}
 
-          <div class="sparkle" style="top: 25%; left: 25%;">✨</div>
-          <div class="sparkle" style="top: 33%; right: 25%; animation-delay: 0.5s;">✨</div>
-          <div class="sparkle" style="bottom: 25%; left: 33%; animation-delay: 1s;">✨</div>
+        <div class="sparkle" style="top: 25%; left: 25%;">✨</div>
+        <div class="sparkle" style="top: 33%; right: 25%; animation-delay: 0.5s;">✨</div>
+        <div class="sparkle" style="bottom: 25%; left: 33%; animation-delay: 1s;">✨</div>
 
-          <div class="side-deco left">🎄</div>
-          <div class="side-deco right">🎅</div>
+        <div class="side-deco left">🎄</div>
+        <div class="side-deco right">🎅</div>
 
-          <div class="bottom-deco left">🦌</div>
-          <div class="bottom-deco right">⛄</div>
-        </div>
+        <div class="bottom-deco left">🦌</div>
+        <div class="bottom-deco right">⛄</div>
     `;
   }
 }
