@@ -30,6 +30,10 @@ jobs:
       - run: yarn install --immutable
       - name: Build
         run: yarn build
+      - name: Setup
+        run: |
+          rm dist/index.html
+          mv dist/setup.html dist/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
